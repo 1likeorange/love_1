@@ -56,6 +56,24 @@
 
     #player {
       flex: 1;
+      position: relative;
+    }
+
+    #toggleButton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      background-color: skyblue;
+      color: wheat;
+      border: none;
+      cursor: pointer;
+      z-index: 1;
+      border-radius: 12px;
+    }
+
+    #toggleButton:hover {
+      background-color: skyblue;
     }
   </style>
 </head>
@@ -66,7 +84,9 @@
       <img src="image/1.jpg" alt="">
     </div>
     <div id="player">
-      <audio src="http://music.163.com/song/media/outer/url?id=191060.mp3" autoplay loop controls></audio>
+      <button id="toggleButton">隐藏播放器</button>
+      <audio id="audioPlayer" src="http://music.163.com/song/media/outer/url?id=191060.mp3" autoplay loop
+        controls></audio>
     </div>
   </div>
   <script>
@@ -84,6 +104,19 @@
 
     //3.创建定时器
     setInterval(changeimg, 3000)
+
+    const toggleButton = document.getElementById('toggleButton');
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    toggleButton.addEventListener('click', () => {
+      if (audioPlayer.style.display === 'none') {
+        audioPlayer.style.display = 'block';
+        toggleButton.textContent = '隐藏播放器';
+      } else {
+        audioPlayer.style.display = 'none';
+        toggleButton.textContent = '开启播放器';
+      }
+    });
   </script>
   <script src="flower_bg.js"></script>
   <script src="heart_mouse.js"></script>
